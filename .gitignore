@@ -1,0 +1,41 @@
+# OS / editor
+.DS_Store
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# llmops-api specific
+llmops-api/.env
+llmops-api/tmp/*
+llmops-api/storage/*
+llmops-api/internal/core/embeddings/
+
+# Node / frontend
+node_modules/
+dist/
+dist-ssr/
+coverage/
+*.local
+*.tsbuildinfo
+.eslintcache
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Cypress / Vitest / Vite
+/cypress/videos/
+/cypress/screenshots/
+__screenshots__/
+*.timestamp-*-*.mjs

@@ -1,0 +1,32 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]: 顶部导航
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - banner [ref=e7]: 应用编排
+        - generic [ref=e8]:
+          - generic [ref=e9]: 人设与回复逻辑
+          - generic [ref=e10]: 应用能力
+      - generic [ref=e11]:
+        - banner [ref=e12]: 调试与预览
+        - generic [ref=e13]:
+          - generic [ref=e14]:
+            - generic [ref=e16]: 越
+            - generic [ref=e17]:
+              - generic [ref=e18]: Y哥
+              - generic [ref=e19]: 能详细解释下什么是LLM吗
+          - generic [ref=e20]:
+            - img [ref=e23]
+            - generic [ref=e25]:
+              - generic [ref=e26]: ChatGPT聊天机器人
+              - generic [ref=e27]: LLM 即 Large Language Model，大语言模型，是一种基于深度学习的自然语言处理模型，具有很高的语言理解和生成能力，能够处理各式各样的自然语言任务，例如文本生成、问答、翻译、摘要等。它通过在大量的文本数据上进行训练，学习到语言的模式、结构和语义知识。
+          - generic [ref=e28]:
+            - img [ref=e31]
+            - generic [ref=e33]:
+              - generic [ref=e34]: ChatGPT聊天机器人
+              - img [ref=e36]
+  - generic [ref=e38]:
+    - generic "Toggle devtools panel" [ref=e39] [cursor=pointer]:
+      - img [ref=e40]
+    - generic "Toggle Component Inspector" [ref=e45] [cursor=pointer]:
+      - img [ref=e46]
