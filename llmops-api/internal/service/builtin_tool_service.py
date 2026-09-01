@@ -102,8 +102,8 @@ class BuiltinToolService:
         category_map = self.build_category_manager.get_category_map()
         return [
             {
-                "name": category["entity"].name,
-                "category": category["entity"].category,
+                "name": category["entities"].name,
+                "category": category["entities"].category,
                 "icon": category["icon"]
             }
             for category in category_map.values()

@@ -14,7 +14,7 @@ import os
 
 from weaviate.collections import Collection
 
-from internal.service import EmbeddingsService
+from internal.service.embeddings_service import EmbeddingsService
 
 # 向量数据库的集合名字
 COLLECTION_NAME = "Dataset"

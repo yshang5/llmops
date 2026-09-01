@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
 import { ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+
 const route = useRoute()
 const router = useRouter()
 const createType = ref<string>('')
 const searchWord = ref(route.query?.search_word || '')
 
-//绑定输入框的搜索事件
+// 绑定输入框的搜索事件
 const search = (value: string) => {
   router.push({
     path: route.path,
@@ -16,10 +17,7 @@ const search = (value: string) => {
   })
 }
 
-//更新createType的值
-const updateCreateType = (value: string) => {
-  createType.value = value
-}
+// 监听路由里的search_word变化
 watch(
   () => route.query?.search_word,
   () => {
@@ -29,10 +27,12 @@ watch(
 </script>
 
 <template>
-  <div class="p-6 flex flex-col overflow-hidden h-full">
-    <div class="sticky top-0 z-20 bg-gray-50 px-6">
-      <!--      顶部标题 + 创建按钮-->
+  <!-- 调整边距+隐藏 -->
+  <div class="px-6 flex flex-col overflow-hidden h-full">
+    <div class="pt-6 sticky top-0 z-20 bg-gray-50">
+      <!-- 顶层标题+创建按钮 -->
       <div class="flex items-center justify-between mb-6">
+        <!-- 左侧标题 -->
         <div class="flex items-center gap-2">
           <a-avatar :size="32" class="bg-blue-700">
             <icon-user :size="18" />
@@ -40,26 +40,42 @@ watch(
           <div class="text-lg font-medium text-gray-900">个人空间</div>
         </div>
         <!-- 创建按钮 -->
-        <a-button v-if="route.path.startsWith('/space/apps')" type="primary" class="rounded-lg"
-          >创建 AI 应用</a-button
+        <a-button
+          v-if="route.path.startsWith('/space/apps')"
+          type="primary"
+          class="rounded-lg"
+          @click="createType = 'app'"
         >
+          创建 AI 应用
+        </a-button>
         <a-button
           v-if="route.path.startsWith('/space/tools')"
           type="primary"
           class="rounded-lg"
           @click="createType = 'tool'"
-          >创建自定义插件</a-button
         >
-        <a-button v-if="route.path.startsWith('/space/workflows')" type="primary" class="rounded-lg"
-          >创建工作流</a-button
+          创建自定义插件
+        </a-button>
+        <a-button
+          v-if="route.path.startsWith('/space/workflows')"
+          type="primary"
+          class="rounded-lg"
+          @click="createType = 'workflow'"
         >
-        <a-button v-if="route.path.startsWith('/space/dataset')" type="primary" class="rounded-lg"
-          >创建知识库</a-button
+          创建工作流
+        </a-button>
+        <a-button
+          v-if="route.path.startsWith('/space/datasets')"
+          type="primary"
+          class="rounded-lg"
+          @click="createType = 'dataset'"
         >
+          创建知识库
+        </a-button>
       </div>
-      <!-- 导航按钮 + 搜索框 -->
+      <!-- 导航按钮+搜索框 -->
       <div class="flex items-center justify-between mb-6">
-        <!-- 左侧导航-->
+        <!-- 左侧导航 -->
         <div class="flex items-center gap-2">
           <router-link
             to="/space/apps"
@@ -93,15 +109,14 @@ watch(
         <!-- 右侧搜索 -->
         <a-input-search
           v-model="searchWord"
-          placeholder="请输入搜索词"
+          placeholder="输入关键词进行搜索"
           class="w-[240px] bg-white rounded-lg border-gray-300"
           @search="search"
         />
       </div>
     </div>
-
-    <!-- 中间内容-->
-    <router-view :create-type="createType" @update-create-type="updateCreateType" />
+    <!-- 中间内容 -->
+    <router-view v-model:create-type="createType" />
   </div>
 </template>
 

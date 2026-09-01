@@ -1,3 +1,5 @@
+@import 'markdown.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,7 +13,8 @@
     display: none;
   }
 
-  html, body {
+  html,
+  body {
     @apply min-h-[600px] min-w-[1200px] h-full w-full;
   }
 }

@@ -117,12 +117,36 @@ class Router:
         bp.add_url_rule(
             "/datasets/<uuid:dataset_id>/documents/<uuid:document_id>/segments/<uuid:segment_id>",
             methods=["POST"],
+            view_func=self.segment_handler.update_segment
+        )
+        bp.add_url_rule(
+            "/datasets/<uuid:dataset_id>/documents/<uuid:document_id>/segments/<uuid:segment_id>/enabled",
+            methods=["POST"],
             view_func=self.segment_handler.update_segment_enabled
         )
         bp.add_url_rule(
             "/datasets/<uuid:dataset_id>/documents/<uuid:document_id>/segments",
             methods=["POST"],
             view_func=self.segment_handler.create_segment
+        )
+        bp.add_url_rule(
+            "/datasets/<uuid:dataset_id>/hit",
+            methods=["POST"],
+            view_func=self.dataset_handler.hit
+        )
+        bp.add_url_rule(
+            "/datasets/<uuid:dataset_id>/queries",
+            view_func=self.dataset_handler.get_dataset_queries
+        )
+        bp.add_url_rule(
+            "/datasets/<uuid:dataset_id>/documents/<uuid:document_id>/segments/<uuid:segment_id>/delete",
+            methods=["POST"],
+            view_func=self.segment_handler.delete_segment
+        )
+        bp.add_url_rule(
+            "/datasets/<uuid:dataset_id>/delete",
+            methods=["POST"],
+            view_func=self.dataset_handler.delete_dataset
         )
         # 3. 应用上注册blueprint
         app.register_blueprint(bp)
